@@ -1,0 +1,8 @@
+Turtle.Show()
+Turtle.Speed = 10
+
+For lines = 1 To 100
+  GraphicsWindow.PenColor = GraphicsWindow.GetRandomColor()
+  Turtle.Move(3 * lines)
+  Turtle.Turn(360 / 5 + 2)
+EndFor

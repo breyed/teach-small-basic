@@ -1,0 +1,27 @@
+' Make the graphics window background black.
+
+' Set the CreateBubble subroutine (below) to be called when the mouse is clicked.
+
+'------------- CreateBubble subroutine
+
+  ' Clear the graphics window.
+  
+  ' Call ChangeColor.
+  
+  ' Choose a diameter to be a random number from 11 and 100.
+
+  ' Create a circle with that diameter at the mouse location.
+  
+'------------- End of CreateBubble subroutine
+
+' Create a list of rainbow colors.
+
+' Create a variable that indexes into the list of colors.
+
+'------------- ChangeColor subroutine
+
+  ' Tell the graphics window to use the next color for its brush.
+  
+  ' Advance to the next color (for next time ChangeColor is called).
+
+'------------- End of ChangeColor subroutine

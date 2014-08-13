@@ -1,0 +1,11 @@
+' Show the turtle.
+
+' Tell the graphics window to use a blue pen.
+
+' Do the following 4 times:
+
+'    Move the turtle 50 pixels.
+
+'    Turn the turtle 90 degrees to the right.
+      
+' Repeat.

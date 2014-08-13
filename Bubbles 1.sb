@@ -1,0 +1,49 @@
+' Make the graphics window background black.
+GraphicsWindow.BackgroundColor = "black"
+
+' Set the CreateBubble subroutine (below) to be called when the mouse is clicked.
+GraphicsWindow.MouseDown = CreateBubble
+
+'------------- CreateBubble subroutine
+Sub CreateBubble
+  
+  ' Clear the graphics window.
+  GraphicsWindow.Clear()
+  
+  ' Call ChangeColor.
+  ChangeColor()
+  
+  ' Choose a diameter to be a random number from 11 and 100.
+  diameter = Math.GetRandomNumber(90) + 10
+  
+  ' Create a circle with that diameter at the mouse location.
+  GraphicsWindow.FillEllipse(GraphicsWindow.MouseX, GraphicsWindow.MouseY, diameter, diameter)
+  
+'------------- End of CreateBubble subroutine
+EndSub
+
+' Create a list of rainbow colors.
+colors[1] = "red"
+colors[2] = "orange"
+colors[3] = "yellow"
+colors[4] = "green"
+colors[5] = "blue"
+colors[6] = "indigo"
+colors[7] = "yellow"
+
+' Create a variable which indicates a color from the list.
+nextColorIndex = 1
+
+'------------- ChangeColor subroutine
+Sub ChangeColor
+
+  ' Tell the graphics window to use the next color for its brush.
+  GraphicsWindow.BrushColor = colors[nextColorIndex]
+  
+  ' Advance to the next color (for next time ChangeColor is called).
+  nextColorIndex = Math.Remainder(nextColorIndex, 7) + 1
+  
+  GraphicsWindow.DrawBoundText(0, 0, 100, nextColorIndex)
+
+'------------- End of ChangeColor subroutine
+EndSub

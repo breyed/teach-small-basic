@@ -1,0 +1,14 @@
+' Show the turtle.
+
+' Make the turtle go as fast as possible.
+
+' Do the following 50 times:
+  
+  '    Tell the graphics window to use a randomly colored pen.
+  
+  '    Move the turtle 3 pixels times the number of the side it is drawing.
+  
+  '    Turn the turtle 360 / 5 + 2 degrees to the right.
+  
+  ' Repeat.
+  

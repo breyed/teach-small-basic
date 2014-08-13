@@ -1,0 +1,20 @@
+Turtle.Speed = 10
+Turtle.X = 200
+
+For house = 1 To 5
+  GraphicsWindow.PenColor = GraphicsWindow.GetRandomColor()
+  height = Math.GetRandomNumber(200)
+  spacing = Math.GetRandomNumber(50) + 10 '  from 11 to 60
+  DrawHouse()
+EndFor
+
+Sub DrawHouse
+  Turtle.Move(height)
+  Turtle.Turn(90)
+  Turtle.Move(30)
+  Turtle.Turn(90)
+  Turtle.Move(height)
+  Turtle.Turn(-90)
+  Turtle.Move(spacing)
+  Turtle.Turn(-90)
+EndSub

@@ -1,0 +1,22 @@
+' Play Jeopary music from here: http://archive.org/download/JeopardyTheme/Jeopardy.mp3
+
+' On the text window, tell the user to think of a number from 1 to 100.
+
+' Note the lower and upper bounds for our guesses (initially 1 and 100).
+
+' While the lower and upper bounds are different:
+
+  ' Calculate a guess to be the average of the lower and upper bounds, rounded down.
+
+  ' Tell the user the size of the range we have narrowed down our guess to.
+  ' If the range is less than 20, use yellow text. If less than 10, use green.
+
+  ' Tell the user our guess, and ask him whether it is too low.
+
+  ' If the user answered yes, update our lower bound to equal the guess plus 1.
+
+  ' Otherwise, update our upper bound to equal the guess.
+
+' We figured it out! Stop the music, and instead play a bell sound.
+
+' Tell the user his number. Use blue text on a yellow background.

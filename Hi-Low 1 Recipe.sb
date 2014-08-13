@@ -1,0 +1,27 @@
+' Choose a random number between 1 and 100.
+
+' Do the following 8 times:
+
+'   On the text window, tell the user to guess the number.
+
+'    On the text window, read a number from the user. This is his guess.
+
+'    If the guess is correct:
+
+'        Sound the bell.
+
+'        On the text window, tell the user that he won.
+
+'        End the program.
+
+'    Otherwise, if the guess is too high:
+
+'        On the text window, tell the user his guess was too high.
+
+'    Otherwise, if the guess is too low:
+
+'        On the text window, tell the user his guess was too low.
+
+' Repeat.
+
+' After 8 wrong guesses, tell the user he lost the game.

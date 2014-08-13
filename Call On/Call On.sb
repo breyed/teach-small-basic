@@ -1,0 +1,55 @@
+' Students to call on.
+students[1] = "Jonathan"
+students[2] = "Jamie"
+students[3] = "Alec"
+students[4] = "John"
+students[5] = "Jacob"
+students[6] = "Zack"
+
+' MP3 files corresponding to each student.
+' Files with the names listed here (plus ".mp3") must be in the same folder as this program.
+' Boy Scout bugle calls are recommended: http://www.scouting.org/filestore/alumni/ringtone/mp3.zip
+sounds[1] = "Cavalry Charge"
+sounds[2] = "First Call"
+sounds[3] = "To Arms"
+sounds[4] = "Reveille"
+sounds[5] = "Assembly"
+sounds[6] = "To the Colors"
+
+' Colors corresponding to each student.
+colors[1] = "orange"
+colors[2] = "pink"
+colors[3] = "blue"
+colors[4] = "red"
+colors[5] = "green"
+colors[6] = "white"
+
+' Sets up the screen.
+GraphicsWindow.BackgroundColor = "black"
+Controls.ButtonClicked = DisplayRandomStudent
+GraphicsWindow.BrushColor = "black"
+Controls.AddButton("Call On a Student", 10, 10)
+studentIndex = 0
+
+Sub DisplayRandomStudent
+  ' Stops the previous announcement.
+  Sound.Stop(soundFile)
+  Shapes.Remove(nameShape)
+  
+  ' Chooses a student for the next announcement, ensuring a student doesn't go twice in a row.
+  lastStudentIndex = studentIndex
+  While lastStudentIndex = studentIndex
+    studentIndex = Math.GetRandomNumber(Array.GetItemCount(students))
+  EndWhile
+
+  ' Announces the student's name.
+  GraphicsWindow.BrushColor = colors[studentIndex]
+  nameShape = Shapes.AddText(students[studentIndex])
+  Shapes.Move(nameShape, GraphicsWindow.Width / 2, -100)
+  Shapes.Zoom(nameShape, 5, 3)
+  Shapes.Animate(nameShape, GraphicsWindow.Width / 2, GraphicsWindow.Height / 2, 1000)
+  
+  ' Plays the sound for the student.
+  soundFile = File.GetSettingsFilePath() + "\..\" + sounds[studentIndex] + ".mp3"
+  Sound.Play(soundFile)
+EndSub

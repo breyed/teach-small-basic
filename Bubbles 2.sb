@@ -1,0 +1,48 @@
+GraphicsWindow.PenWidth = 7
+GraphicsWindow.MouseDown = Draw
+
+Sub Draw
+  If Mouse.IsLeftButtonDown And Mouse.IsRightButtonDown Then ' Clear the window
+    GraphicsWindow.Clear()
+  ElseIf Mouse.IsLeftButtonDown Then ' Draw a ring
+    ChangeColor()
+    diameter = 80
+    radius = diameter / 2
+    x = GraphicsWindow.MouseX - radius
+    y = GraphicsWindow.MouseY - radius
+    GraphicsWindow.DrawEllipse(x, y, diameter, diameter)
+  Else ' Draw an image
+    ChangeImage()
+    x = GraphicsWindow.MouseX - ImageList.GetWidthOfImage(image)/2
+    y = GraphicsWindow.MouseY - ImageList.GetHeightOfImage(image)/2
+    GraphicsWindow.DrawImage(image, x, y)
+  EndIf
+EndSub
+
+
+' --- ChangeColor
+
+colors[1] = "blue"
+colors[2] = "yellow"
+colors[3] = "black"
+colors[4] = "green"
+colors[5] = "red"
+nextColorIndex = 1
+
+Sub ChangeColor
+  GraphicsWindow.PenColor = colors[nextColorIndex]
+  nextColorIndex = Math.Remainder(nextColorIndex, 5) + 1
+EndSub
+
+
+' --- ChangeColor
+
+images[1] = ImageList.LoadImage("http://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Natalie_Nicholson_at_the_2010_Winter_Olympics.jpg/320px-Natalie_Nicholson_at_the_2010_Winter_Olympics.jpg")
+images[2] = ImageList.LoadImage("http://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Olympic_Cauldron_lit_at_2010_Winter_Olympics_opening_ceremony_2.jpg/320px-Olympic_Cauldron_lit_at_2010_Winter_Olympics_opening_ceremony_2.jpg")
+images[3] = ImageList.LoadImage("http://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Slalom_canoeing_2012_Olympics_C2_GBR_Timothy_Baillie_and_Etienne_Stott_3.jpg/640px-Slalom_canoeing_2012_Olympics_C2_GBR_Timothy_Baillie_and_Etienne_Stott_3.jpg")
+images[4] = ImageList.LoadImage("http://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Seoul_Olympic_torch.jpg/640px-Seoul_Olympic_torch.jpg")
+
+Sub ChangeImage
+  image = images[nextImageIndex]
+  nextImageIndex = Math.Remainder(nextImageIndex, 4) + 1
+EndSub

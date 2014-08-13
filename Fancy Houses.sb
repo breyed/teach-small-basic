@@ -1,0 +1,76 @@
+Turtle.Speed = 10
+Turtle.X = 10
+
+height = 50
+DrawHouse()
+
+height = 120
+DrawHouse()
+
+height = 20
+DrawHouse()
+
+height = 60
+DrawHouse()
+
+height = 40
+DrawHouse()
+
+height = 80
+DrawHouse()
+
+height = 20
+DrawHouse()
+
+height = 105
+DrawHouse()
+
+height = 70
+DrawHouse()
+
+Sub DrawHouse
+  GraphicsWindow.PenColor = GraphicsWindow.GetRandomColor()
+  Turtle.Move(height)
+  
+  If height > 55 Then
+    
+    If height > 100 Then
+      houseColor = GraphicsWindow.PenColor
+      GraphicsWindow.PenColor = "red"
+    EndIf
+    
+    DrawFlatRoof()
+    
+    If height > 100 Then
+      GraphicsWindow.PenColor = houseColor
+    EndIf
+    
+  Else
+    
+    DrawPointyRoof()
+    
+  Endif
+  
+  Turtle.Move(height)
+  Turtle.Turn(-90)
+  
+  ' Leave space between buildings.
+  GraphicsWindow.PenColor = "green"
+  Turtle.Move(2)
+  Turtle.Turn(-90)
+  
+EndSub
+
+Sub DrawFlatRoof
+  Turtle.Turn(90)
+  Turtle.Move(30)
+  Turtle.Turn(90)
+EndSub
+
+Sub DrawPointyRoof
+  Turtle.Turn(45)
+  Turtle.Move(20)
+  Turtle.Turn(90)
+  Turtle.Move(20)
+  Turtle.Turn(45)
+EndSub

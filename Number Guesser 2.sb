@@ -1,0 +1,36 @@
+Sound.Play("http://archive.org/download/JeopardyTheme/Jeopardy.mp3")
+TextWindow.WriteLine("Think of a number from 1 to 100.")
+lower = 1
+upper = 100
+
+While lower <> upper
+  guess = Math.Floor((lower + upper) / 2)
+  range = upper - lower + 1
+  
+  If range < 10 Then
+    TextWindow.ForegroundColor = "yellow"
+  ElseIf range < 20 Then
+    TextWindow.ForegroundColor = "green"
+  EndIf
+  TextWindow.WriteLine("I have your number narrowed down to a range of " + range + " choices.")
+  TextWindow.ForegroundColor = "white" ' Puts the color back to normal.
+  
+  TextWindow.Write("My guess is " + guess + ". Is it correct (C), too low (L), or too high (H)? ")
+  response = TextWindow.Read()
+  If response = "c" Or response = "C" Then
+    lower = guess
+    upper = guess
+  ElseIf response = "l" Or response = "L" Then
+    lower = guess
+  ElseIf response = "h" Or response = "H" Then
+    upper = guess
+  Else
+    TextWindow.WriteLine("Please type C, L, or H.")
+  EndIf
+EndWhile
+
+Sound.PlayBellRing()
+
+TextWindow.ForegroundColor = "blue"
+TextWindow.BackgroundColor = "yellow"
+TextWindow.WriteLine("Your number is " + lower + ".")

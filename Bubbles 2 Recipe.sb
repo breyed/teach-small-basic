@@ -1,0 +1,57 @@
+' Tell the graphics window to use pen width 7.
+
+' Set the Draw subroutine (below) to be called when the mouse is clicked.
+
+'------------- Draw subroutine
+  
+  ' If the the left and right mouse buttons are both being pressed:
+    
+    ' Clear the graphics window.
+    
+  ' Otherwise, if the left mouse button is being pressed:
+    
+    ' Call ChangeColor.
+    
+    ' Specify a diameter to be 80.
+    
+    ' Specify a radius to be half the diameter.
+    
+    ' Specify the x and y coordinates that would center a circle around the mouse.
+    
+    ' Create a ring with the specified diameter and position.
+    
+  ' Otherwise:
+    
+    ' Call ChangeImage.
+    
+    ' Specify the x and y coordinates that would center the image around the mouse.
+    
+    ' Display the image with the specified diameter and position.
+    
+'------------- End of Draw subroutine
+
+
+' Create a list of olympic colors: blue, yellow, black, green, and red.
+
+' Create a variable that indexes into the list of colors.
+
+'------------- ChangeColor subroutine
+  
+  ' Tell the graphics window to use the next color for its pen.
+  
+  ' Advance to the next color (for next time ChangeColor is called).
+  
+'------------- End of ChangeColor subroutine
+
+
+' Create a list of images (use ImageList.LoadImage for each image).
+
+' Create a variable that indexes into the list of images.
+
+'------------- ChangeImage subroutine
+  
+  ' Set the image variable to the name of the next image.
+  
+  ' Advance to the next image (for next time ChangeImage is called).
+  
+'------------- End of ChangeImage subroutine

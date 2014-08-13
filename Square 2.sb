@@ -1,0 +1,19 @@
+Turtle.Show()
+Turtle.Speed = 10
+GraphicsWindow.PenColor = "purple"
+
+For side = 1 To 4
+  Turtle.Move(50)
+  Turtle.Turn(90)
+EndFor
+
+Turtle.Turn(180)
+GraphicsWindow.PenColor = "green"
+GraphicsWindow.PenWidth = 5
+
+For side = 1 To 3
+  Turtle.Move(50)
+  Turtle.Turn(-90)
+EndFor
+
+Turtle.Hide()

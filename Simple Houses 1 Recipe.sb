@@ -1,0 +1,42 @@
+' Make the turtle move as fast as possible.
+
+' Tell the graphics window to use a LightGray colored pen.
+
+' Have the turtle start 200 pixels in from the left side.
+
+' Use a house height of 40 pixels.
+
+' DrawHouse (subroutine below)
+
+' Use a house height of 120 pixels.
+
+' DrawHouse (subroutine below)
+
+' Use a house height of 90 pixels.
+
+' DrawHouse (subroutine below)
+
+' Use a house height of 20 pixels.
+
+' DrawHouse (subroutine below)
+
+
+' ------------- Subroutine for DrawHouse
+
+'    Move the turtle the height of a house.
+
+'    Turn the turtle 90 degrees to the right.
+
+'    Move the turtle 30 pixels.
+
+'    Turn the turtle 90 degrees to the right.
+
+'    Move the turtle the height of a house.
+
+'    Turn the turtle 90 degrees to the left.
+
+'    Move the turtle 20 pixels.
+
+'    Turn the turtle 90 degrees to the left.
+
+' ------------- End of DrawHouse subroutine

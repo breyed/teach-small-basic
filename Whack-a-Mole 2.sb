@@ -1,0 +1,52 @@
+Timer.Tick = DrawBubble
+GraphicsWindow.MouseDown = OnClick
+whacks = 0
+score = 0
+bubbles = 50
+DrawBubble()
+
+Sub DrawBubble
+  GraphicsWindow.Clear()
+  GraphicsWindow.BrushColor = "black"
+  GraphicsWindow.DrawText(10, 10, "Whacks: " + whacks)
+  GraphicsWindow.DrawText(10, 30, "Score: " + score)
+  GraphicsWindow.DrawText(10, 50, "Bubbles left: " + bubbles)
+  
+  If bubbles = 0 Then ' Game over
+    Timer.Pause()
+    x = -1000 ' Someplace the user can't click
+    y = -1000
+  Else ' Game still going
+    If Math.GetRandomNumber(5) = 1 Then ' Quick bonus bubble
+      GraphicsWindow.BrushColor = "red"
+      bonus = 2
+      Timer.Interval = 500
+    Else ' Normal bubble
+      GraphicsWindow.BrushColor = "green"
+      bonus = 1
+      Timer.Interval = 700
+    EndIf
+    
+    radius = Math.GetRandomNumber(60) + 10
+    x = Math.GetRandomNumber(GraphicsWindow.Width)
+    y = Math.GetRandomNumber(GraphicsWindow.Height)
+    GraphicsWindow.FillEllipse(x-radius, y-radius, radius*2, radius*2)
+    bubbles = bubbles - 1
+  EndIf ' End of game over or still going if/else block
+EndSub
+
+Sub OnClick
+  xDistance = x - GraphicsWindow.MouseX
+  yDistance = y - GraphicsWindow.MouseY
+  distance = Math.SquareRoot(xDistance*xDistance + yDistance*yDistance)
+  
+  If distance <= radius Then
+    whacks = whacks + 1
+    score = score + (100 - radius) * bonus ' Smaller bubbles get more points
+    If bonus = 1 Then
+      Sound.PlayChime()
+    Else
+      Sound.PlayBellRing()
+    EndIf
+  EndIf
+EndSub

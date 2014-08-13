@@ -1,0 +1,23 @@
+Timer.Tick = DrawBubble
+Timer.Interval = 700
+GraphicsWindow.MouseDown = OnClick
+score = 0
+
+Sub DrawBubble
+  GraphicsWindow.Clear()
+  GraphicsWindow.DrawText(10, 10, "Score: " + score)
+  radius = 50
+  x = Math.GetRandomNumber(GraphicsWindow.Width)
+  y = Math.GetRandomNumber(GraphicsWindow.Height)
+  GraphicsWindow.FillEllipse(x-radius, y-radius, radius*2, radius*2)
+EndSub
+
+Sub OnClick
+  xDistance = x - GraphicsWindow.MouseX
+  yDistance = y - GraphicsWindow.MouseY
+  distance = Math.SquareRoot(xDistance*xDistance + yDistance*yDistance)
+  If distance <= radius Then
+    score = score + 1
+    Sound.PlayChime()
+  EndIf
+EndSub

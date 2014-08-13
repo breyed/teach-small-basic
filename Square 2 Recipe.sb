@@ -1,0 +1,30 @@
+' Show the turtle.
+
+' Make the turtle move as fast as possible.
+
+' Tell the graphics window to use a yellow pen.
+
+' Do the following 4 times:
+
+'    Move the turtle 50 pixels.
+
+'    Turn the turtle 90 degrees to the right.
+
+' Repeat.
+
+
+' Make the turtle turn around.
+
+' Tell the graphics window to use a green pen.
+
+' Tell the graphics window to use a wide pen.
+
+' Do the following 3 times:
+
+'    Move the turtle 50 pixels.
+
+'    Turn the turtle 90 degrees to the left.
+
+' Repeat.
+
+' Hide the turtle.

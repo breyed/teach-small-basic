@@ -1,0 +1,185 @@
+' Word guessing game
+
+' Presents a word to the user along with its definition and picture.
+' The user tries to guess the word, asking for a hint if needed.
+' The display uses a 6x3 cell grid. The definition is displayed in columns 1 and 2, the picture in columns 3 through 6.
+' The definition columns have controls for guessing the word at the top and a help area at the bottom with buttons for getting hints and giving up.
+
+InitializeGame()
+PresentNewWord()
+
+' Initializes the game.
+' Plays an opening chime, sets up screen metrics, hooks up the button click event, and downloads the words.
+Sub InitializeGame
+  Sound.PlayChime()
+  c = 200 ' the width of a cell
+  margin = 20
+  helpButtonTop = 3*c - 60 ' the Y position of the top of the buttons in the help area
+  GraphicsWindow.Width = 6*c
+  GraphicsWindow.Height = 3*c
+  GraphicsWindow.Left = (Desktop.Width - GraphicsWindow.Width) / 2
+  GraphicsWindow.Top = (Desktop.Height - GraphicsWindow.Height) / 3
+  GraphicsWindow.Title = "Word Guesser"
+  GraphicsWindow.FontBold = 0
+  Controls.ButtonClicked = OnClick
+  DownloadWords()
+EndSub
+
+' Downloads a file containing a list of words from the internet.
+' Reads line numbers 1 through 1000, putting the word in each line into an array element whose index matches the line number.
+' If there is no word on a line, stops reading the file.
+Sub DownloadWords
+  wordsFile = Network.DownloadFile("https://gist.githubusercontent.com/breyed/54687bf9dcdcafe9ff27/raw/98a795f1d71bf6ab348e14b20247571589d63725/treasure-island-words")
+  lineNumber = 1
+  While lineNumber > 0
+    words[lineNumber] = file.ReadLine(wordsFile, lineNumber) ' "file" is all lower case because otherwise, Small Basic comments the line out when importing the file.
+    If words[lineNumber] = "" Then
+      lineNumber = 0
+    Else
+      lineNumber = lineNumber + 1
+    EndIf
+  EndWhile
+EndSub
+
+' Presents a new word to the user along with its definition and picture.
+' Also displays an input form for the user's guess.
+Sub PresentNewWord
+  GetWordAndDefinition()
+  GraphicsWindow.Clear()
+  DrawForm()
+  DrawPicture()
+  AnimateFireworks()
+EndSub
+
+' Randomly chooses a word from the list of words and gets its definition from the dictionary.
+' Removes the definition's header and redacts any occurrences of the word.
+' Also clears the hint.
+Sub GetWordAndDefinition
+  word = words[Math.GetRandomNumber(Array.GetItemCount(words))]
+  definition = Dictionary.GetDefinition(word)
+  RemoveDefinitionHeader()
+  RedactWordFromDefinition()
+  hint = ""
+EndSub
+
+' Removes the header from the definition.
+' The header is the text up to and including the first blank line.
+' Finds the first blank line by searching for two consecutive line ending marks (2 instances of CR/LF).
+Sub RemoveDefinitionHeader
+  lf = Text.GetCharacter(10)
+  cr = Text.GetCharacter(13)
+  definition = Text.GetSubTextToEnd(definition, Text.GetIndexOf(definition, cr+lf+cr+lf) + 4)
+EndSub
+
+' Redacts occurrences of the word from the definition.
+' Repeatedly searches through the definition for the word.
+' Each time it finds a word, it replaces the definition with the text before the word,
+' followed by four stars, followed by the text after the word.
+Sub RedactWordFromDefinition
+  position = Text.GetIndexOf(definition, word)
+  While position > 0
+    frontText = Text.GetSubText(definition, 1, position-1)
+    backText = Text.GetSubTextToEnd(definition, position + Text.GetLength(word))
+    definition = frontText + "****" + backText
+    position = Text.GetIndexOf(definition, word)
+  EndWhile
+EndSub
+
+' Draws a form with the definition and controls for guessing, hints, getting new pictures, and getting a new word.
+' Draws a text box for the guess and a Guess button at the top. Draws the definition underneath.
+' Draws a help area at the bottom by first drawing a white rectangle to blank the space (in case the definition is long),
+' and then drawing Get Hint, New Picture, and New Word buttons.
+Sub DrawForm
+  ' Adds the guess text box and button.
+  GraphicsWindow.BrushColor = "black"
+  GraphicsWindow.DrawBoundText(margin, margin + 40, 2*c - 2*margin, definition)
+  guessTextBox = Controls.AddTextBox(margin, margin)
+  guessButton = Controls.AddButton("Guess", margin + 175, margin)
+  
+  ' Clears the help area.
+  GraphicsWindow.BrushColor = "white"
+  GraphicsWindow.FillRectangle(0, helpButtonTop - margin, 2*c, 3*c)
+  
+  ' Adds the help area buttons.
+  GraphicsWindow.BrushColor = "black"
+  getHintButton = Controls.AddButton("Get Hint", margin, helpButtonTop)
+  newPictureButton = Controls.AddButton("New Picture", margin + .6*c, helpButtonTop)
+  newWordButton = Controls.AddButton("New Word", margin + 1.3*c, helpButtonTop)
+EndSub
+
+' Gets a random picture for the word from Flickr and draws it on the right side of the window.
+Sub DrawPicture
+  picture = Flickr.GetRandomPicture(word)
+  GraphicsWindow.DrawResizedImage(picture, 2*c, 0, 4*c, 3*c)
+EndSub
+
+' Handles button clicks.
+Sub OnClick
+  If Controls.LastClickedButton = guessButton Then
+    CheckWordGuess()
+  ElseIf Controls.LastClickedButton = getHintButton Then
+    DisplayHint()
+  ElseIf Controls.LastClickedButton = newPictureButton Then
+    DrawPicture()
+  ElseIf Controls.LastClickedButton = newWordButton Then
+    Sound.PlayChime()
+    PresentNewWord()
+  EndIf
+EndSub
+
+' Checks whether a guess at the word is correct.
+' If the user entered the correct word, plays the bell and presents a new word.
+' If incorrect, plays a "wrong answer" tone.
+Sub CheckWordGuess
+  If Controls.GetTextBoxText(guessTextBox) = word Then
+    Sound.PlayBellRing()
+    PresentNewWord()
+  Else
+    Sound.PlayMusic("O3 D8 O2 D2")
+  EndIf
+EndSub
+
+' Animates three squares from the bottom-middle of the window to past the top at the left, middle, and right, respectively.
+' Colors the squares green, blue, and red, from left to right. Rotates the blue square to look like a diamond.
+' Makes each square semi-translucent.
+Sub AnimateFireworks
+
+  ' Green square
+  GraphicsWindow.BrushColor = "green"
+  r1 = Shapes.AddRectangle(50, 50)
+  Shapes.Move(r1, 3*c, 3*c)
+  Shapes.SetOpacity(r1, 50)
+  Shapes.Animate(r1, 0, -100, 1000)
+  
+  ' Blue square
+  GraphicsWindow.BrushColor = "blue"
+  r3 = Shapes.AddRectangle(50, 50)
+  Shapes.Rotate(r3, 45)
+  Shapes.Move(r3, 3*c, 3*c)
+  Shapes.SetOpacity(r3, 50)
+  Shapes.Animate(r3, 3*c, -100, 1000)
+  
+  ' Red square
+  GraphicsWindow.BrushColor = "red"
+  r2 = Shapes.AddRectangle(50, 50)
+  Shapes.Move(r2, 3*c, 3*c)
+  Shapes.SetOpacity(r2, 50)
+  Shapes.Animate(r2, 6*c, -100, 1000)
+EndSub
+
+' Displays a hint about the word by showing the beginning letters under the control buttons.
+' Initially, there is no hint. Each time the hint button is clicked, shows one additional letter.
+' Only shows the first 3 letters, and never the entire word. After that, hides the button to get a hint.
+' Before drawing the hint text, clears its space by filling a white rectangle.
+Sub DisplayHint
+  hint = Text.GetSubText(word, 1, Text.GetLength(hint) + 1)
+  hintTop = helpButtonTop + 34
+  GraphicsWindow.BrushColor = "white"
+  GraphicsWindow.FillRectangle(0, hintTop, 2*c, 3*c)
+  GraphicsWindow.BrushColor = "green"
+  GraphicsWindow.DrawText(margin, hintTop, "The word starts with: " + hint)
+  
+  If Text.GetLength(hint) >= 3 Or Text.GetLength(hint) >= Text.GetLength(word) - 1 Then
+    Controls.HideControl(getHintButton)
+  EndIf
+EndSub

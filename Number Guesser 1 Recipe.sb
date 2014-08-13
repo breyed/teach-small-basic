@@ -1,0 +1,19 @@
+' On the text window, tell the user to think of a number from 1 to 100.
+
+' Set the initial lower and upper bounds for our guesses 1 and 100, respectively.
+
+' While the lower and upper bounds are different:
+
+  ' Calculate a guess to be the average of the lower and upper bounds, rounded down.
+
+  ' Tell the user our guess, and ask him whether it is correct, too low, or too high.
+  
+  ' If correct, set our lower and upper bounds to be the guess.
+  
+  ' Otherwise, if too low, set our lower bound to be the guess plus 1.
+
+  ' Otherwise, set our upper bound to be the guess minus 1.
+  
+' We figured it out! Play a bell sound.
+
+' Tell the user his number.

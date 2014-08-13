@@ -1,0 +1,58 @@
+' Tell the timer to call DrawBubble whenever the timer expires.
+
+' Tell the graphics window to call OnClick when the mouse is clicked.
+
+' Start with no whacks and a score of 0.
+
+' Start with 50 bubbles.
+
+' Call DrawBubble to draw the first bubble.
+
+'------------- DrawBubble subroutine
+  
+  ' Clear the graphics window.
+
+  ' Draw black text on the graphics window showing whacks, score, and bubbles left.
+  ' Draw the text at coordinates (10,10), (10,30), and (10,50), respectively.
+  
+  ' If there are no bubbles left:
+  
+    ' Stop the timer.
+    
+    ' Set x and y to values that can't be clicked.
+
+  ' Otherwise:
+    
+    ' If randomly this is 1 out of 5 chances:
+
+      ' Use a red brush, a bonus of 2, and a timer interval of 0.5 seconds.
+    
+    ' Otherwise:
+
+      ' Use a green brush, a bonus of 1, and a timer interval of 0.7 seconds.
+
+    ' Choose a random radius from 11 to 70.
+
+    ' Choose random x and y coordinates within the bound of the graphics window.
+
+    ' Draw a circle at the x and y coordinates with the specified radius.
+
+    ' Subtract 1 from the number of bubbles left.
+    
+'------------- End of DrawBubble subroutine
+
+'------------- OnClick subroutine
+  
+  ' Calculate the x and y component distances between the bubble and the mouse.
+  
+  ' Calculate the direct distance between the bubble and the mouse.
+  
+  ' If the direct distance is within the bubble radius:
+  
+    ' Add one to the number of whacks.
+  
+    ' Add this to the score: (100 - radius) * bonus.
+  
+    ' If it was a normal bubble, play chimes; if it was fast, play the bell.
+
+'------------- End of OnClick subroutine

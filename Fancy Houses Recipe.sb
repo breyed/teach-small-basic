@@ -1,0 +1,92 @@
+' Make the turtle move as fast as possible.
+
+' Have the turtle start 10 pixels in from the left side.
+
+' Use a house height of 50 pixels.
+
+' DrawHouse (subroutine below)
+
+' Use a house height of 120 pixels.
+
+' DrawHouse (subroutine below)
+
+' Use a house height of 20 pixels.
+
+' DrawHouse (subroutine below)
+
+' Use a house height of 60 pixels.
+
+' DrawHouse (subroutine below)
+
+' Use a house height of 40 pixels.
+
+' DrawHouse (subroutine below)
+
+' Use a house height of 80 pixels.
+
+' DrawHouse (subroutine below)
+
+' Use a house height of 20 pixels.
+
+' DrawHouse (subroutine below)
+
+' Use a house height of 105 pixels.
+
+' DrawHouse (subroutine below)
+
+' Use a house height of 70 pixels.
+
+' DrawHouse (subroutine below)
+
+
+' ------------- Subroutine for DrawHouse
+
+'    Tell the graphics window to use a randomly colored pen.
+
+'    Move the turtle the height of a house.
+
+'    If the current height is greater than 55, then:
+
+'        DrawFlatRoof (subroutine below)
+
+'    Otherwise:
+
+'        DrawPointyRoof (subroutine below)
+
+'    Move the turtle the height of a house.
+
+'    Turn the turtle 90 degrees to the left.
+
+'    Tell the graphics window to use a green pen.
+
+'    Move the turtle 20 pixels.
+
+'    Turn the turtle 90 degrees to the left.
+
+' ------------- End of DrawHouse subroutine
+
+
+'------------- Subroutine for DrawFlatRoof
+
+'        Turn the turtle 90 degrees to the right.
+
+'        Move the turtle 30 pixels.
+
+'        Turn the turtle 90 degrees to the right.
+
+' ------------- End of DrawFlatRoof subroutine
+
+
+'------------- Subroutine for DrawPointyRoof
+
+'        Turn the turtle 45 degrees to the right.
+
+'        Move the turtle 20 pixels.
+
+'        Turn the turtle 90 degrees to the right.
+
+'        Move the turtle 20 pixels.
+
+'        Turn the turtle 45 degrees to the right.
+
+' ------------- End of DrawPointyRoof subroutine

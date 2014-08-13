@@ -1,0 +1,33 @@
+' Tell the timer to call DrawBubble every 0.7 seconds.
+
+' Tell the graphics window to call OnClick when the mouse is clicked.
+
+' Start with a score of 0.
+
+'------------- DrawBubble subroutine
+  
+  ' Clear the graphics window.
+    
+  ' Draw text showing the score on the graphics window at coordinates (10,10).
+    
+  ' Create radius variable and set it to 50.    
+
+  ' Choose random x and y coordinates within the bound of the graphics window.
+    
+  ' Draw a circle at the x and y coordinates with the specified radius.
+    
+'------------- End of DrawBubble subroutine
+
+'------------- OnClick subroutine
+  
+  ' Calculate the x and y component distances between the bubble and the mouse.
+  
+  ' Calculate the direct distance between the bubble and the mouse.
+  
+  ' If the direct distance is within the bubble radius:
+  
+    ' Add one point to the score.
+  
+    ' Play chimes.
+
+'------------- End of OnClick subroutine

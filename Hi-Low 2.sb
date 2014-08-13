@@ -1,0 +1,25 @@
+TextWindow.Write("Enter the maximum number to guess up to: ")
+max = TextWindow.ReadNumber()
+answer = Math.GetRandomNumber(max)
+turns = Math.Floor(Math.Log(max) / Math.Log(2)) + 1
+
+For turn = 1 To turns
+  
+  TextWindow.WriteLine("Guesses remaining: " + (turns - turn + 1))
+  TextWindow.Write("Guess a number: ")
+  guess = TextWindow.ReadNumber()
+  
+  If guess = answer Then
+    Sound.PlayBellRing()
+    TextWindow.WriteLine("You won!")
+    TextWindow.Read() ' Waits for the user to press Enter before ending the program.
+    Program.End()
+  ElseIf guess > answer Then
+    TextWindow.WriteLine("Too high.")
+  Else
+    TextWindow.WriteLine("Too low.")
+  EndIf
+  
+EndFor
+
+TextWindow.WriteLine("You lost.")

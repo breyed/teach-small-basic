@@ -1,0 +1,36 @@
+' Make the turtle move as fast as possible.
+
+' Have the turtle start 200 pixels in from the left side.
+
+' Do the following 5 times:
+
+'    Tell the graphics window to use a randomly colored pen.
+
+'    Use a random house height from 1 to 200 pixels. (Look in the Math object.)
+
+'    Use a random house spacing from 11 to 60 pixels.
+
+'    DrawHouse (subroutine below)
+
+' Repeat
+
+
+' ------------- Subroutine for DrawHouse
+
+'    Move the turtle the height of a house.
+
+'    Turn the turtle 90 degrees to the right.
+
+'    Move the turtle 30 pixels.
+
+'    Turn the turtle 90 degrees to the right.
+
+'    Move the turtle the height of a house.
+
+'    Turn the turtle 90 degrees to the left.
+
+'    Move the turtle the house spacing.
+
+'    Turn the turtle 90 degrees to the left.
+
+' ------------- End of DrawHouse subroutine
