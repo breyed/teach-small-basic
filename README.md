@@ -1,4 +1,4 @@
-# Teach Small Basic
+﻿# Teach Small Basic
 
 **Programs for teaching Small Basic to beginning programmers**
 
@@ -92,6 +92,8 @@ New concepts:
 
 You try to guess a randomly chooses a word given a definition and picture.
 
+***NOTE:** 2014-12-04 - This program no longer works because the Small Basic functions `Network.DownloadFile` and `Flickr.GetRandomPicture` no longer work.*
+
 New concepts:
 
 * Grid layout
@@ -105,6 +107,26 @@ As a bonus for the last lesson, a teacher can choose his favorite into applicati
 ## Call On
 
 Often students are shy about volunteering what they know, especially when they are uncertain. The "Call On" program is a fun way to randomly choose a student to call on to answer a question. To use it, customize `Call On.sb` by changing the number of student and call items in their respective arrays to match your class, and set the name and preferred bugle call for each student.
+
+## Small Basic resources
+
+* [Small Basic Getting Started Guide](http://msdn.microsoft.com/en-us/beginner/hh304480.aspx)
+* [Small Basic Curriculum](http://social.technet.microsoft.com/wiki/contents/articles/16982.small-basic-curriculum-online.aspx)
+
+## Beyond Small Basic
+
+The simplicity and minimalism of Small Basic make it well suited for beginners. Its limitations also provide healthy incentive for new programmers growing in skill to move past Small Basic. Here are some suggestions:
+
+### Online courses
+*	[Learn to Program: The Fundamentals](https://www.coursera.org/course/programming1) (Toronto)
+*	[Introduction to Computer Science](https://www.edx.org/course/harvardx/harvardx-cs50x-introduction-computer-1022) (Harvard)
+*	[Introduction to Computer Science](https://www.udacity.com/course/cs101) (Udacity)
+
+### Further study
+*	[C# for Sharp Kids](http://msdn.microsoft.com/en-us/beginner/bb308756.aspx) – e-Book
+*	[Accelerated C# Fundamentals](http://pluralsight.com/training/Courses/TableOfContents/csharp-fundamentals) – video ([free with DreamSpark](https://www.dreamspark.com/Product/Product.aspx?productid=21))
+*	[Code Rules](http://msdn.microsoft.com/en-us/beginner/bb308755.aspx) – curriculum for classroom or self-teaching Visual Basic .NET
+*	[Microsoft Virtual Academy](http://www.microsoftvirtualacademy.com/)
 
 ## Acknowledgment
 

@@ -1,4 +1,5 @@
 ' Word guessing game
+' NOTE: 2014-12-04 - This program no longer works because Network.DownloadFile and Flickr.GetRandomPicture no longer work.
 
 ' Presents a word to the user along with its definition and picture.
 ' The user tries to guess the word, asking for a hint if needed.
